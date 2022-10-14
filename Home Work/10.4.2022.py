@@ -104,10 +104,23 @@ class LinkedList:
                 del proximo
         else:
             print("Lista vazia")
- 
-    # Remover determinado elemento - não terminado
-    def removeElemento(self):
-        print("Você é trouxa")
+            
+  # Remover determinado elemento
+    def removeElemento(self, index):
+       atual = self.InicioDaLista
+       anterior = None
+       found = False
+
+       while not found:
+           if atual.data == index:
+               found = True
+           else:
+               anterior = atual
+               atual = atual.next
+       if anterior == None:
+           self.InicioDaLista = atual.next
+       else:
+           anterior.next = atual.next
 
     # Item inserido na primeira posição - ajustar
     def insereNoComeco(self, elemento):
@@ -221,9 +234,9 @@ index = int(input("Escolha a posição do nó que deseja remover: "))
 Lista.removeDoPonto(index)
 Lista.printLista()
 
-print("\nRemover elemento determinado: ")
-elemento = int(input("Escolha o elemento que deseja remover: "))
-Lista.removeElemento(elemento) #ajustar
+print("\nExcluir elemento: ")
+elemento = int(input("Digite o elemento que deseja excluir: "))
+Lista.removeElemento(elemento)
 Lista.printLista()
 
 print("\nInserir no começo da lista: ")
